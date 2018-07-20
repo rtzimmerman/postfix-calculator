@@ -13,6 +13,11 @@ function process(event){
     else if(operators.filter(operator => operator === input).length === 1){
         const result = eval(`${stack.pop()}${input}${stack.pop()};`)
         console.log('Result: ', result);
+        document.getElementById('result').innerHTML = null;
+        const resultContainer = document.createElement('p');
+        const resultOutput = document.createTextNode(result);
+        resultContainer.appendChild(resultOutput);
+        document.querySelector('#result').appendChild(resultContainer);
         stack.push(result);
     }
     else {
