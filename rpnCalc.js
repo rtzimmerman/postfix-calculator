@@ -11,7 +11,9 @@ function process(event){
         stack.push(input);
     }
     else if(operators.filter(operator => operator === input).length === 1){
-        const result = eval(`${stack.pop()}${input}${stack.pop()};`)
+        const secondOperand = stack.pop();
+        const firstOperand = stack.pop();
+        const result = eval(`${firstOperand} ${input} ${secondOperand}`);
         console.log('Result: ', result);
         document.getElementById('result').innerHTML = null;
         const resultContainer = document.createElement('p');
